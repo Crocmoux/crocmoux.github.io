@@ -25,6 +25,3 @@ sed -i '' -e '/^ *$/d' ./404.html
 sed -i '' -e 's/<div class="mbr-white col-md-10">/<div class="mbr-white col-md-8">/g' ./index.html
 sed -i '' -e 's/<h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">/<h1 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1" style="height: auto;background-color: white;margin: auto;width: auto;border-style: solid;">/g' ./index.html
 
-sed -i '' -e 's/<div class="mbr-white col-md-10">/<div class="mbr-white col-md-8">/g' ./404.html
-sed -i '' -e 's/<h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">/<h1 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1" style="height: auto;background-color: white;margin: auto;width: auto;border-style: solid;">/g' ./404.html
-
