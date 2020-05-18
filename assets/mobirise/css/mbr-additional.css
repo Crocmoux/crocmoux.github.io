@@ -712,12 +712,12 @@ section.lazy-placeholder:after {
 }
 .cid-rZ4dsyKntU .navbar {
   padding: .5rem 0;
-  background: #333333;
+  background: #55b4d4;
   transition: none;
   min-height: 77px;
 }
 .cid-rZ4dsyKntU .navbar-dropdown.bg-color.transparent.opened {
-  background: #333333;
+  background: #55b4d4;
 }
 .cid-rZ4dsyKntU a {
   font-style: normal;
@@ -808,7 +808,7 @@ section.lazy-placeholder:after {
   padding-bottom: 0;
 }
 .cid-rZ4dsyKntU .dropdown .dropdown-menu {
-  background: #333333;
+  background: #55b4d4;
   visibility: hidden;
   display: block;
   position: absolute;
@@ -880,7 +880,7 @@ section.lazy-placeholder:after {
   width: 30px;
   height: 2px;
   border-right: 5px;
-  background-color: #ffffff;
+  background-color: #2e2e2e;
 }
 .cid-rZ4dsyKntU button.navbar-toggler .hamburger span:nth-child(1) {
   top: 0;
@@ -1114,14 +1114,14 @@ section.lazy-placeholder:after {
   color: #c1c1c1 !important;
 }
 .cid-rZ4dtABDg3 {
-  background-image: url("../../../assets/images/thumb-1920-428991-1920x1200.jpg");
+  background-image: url("../../../assets/images/gzlyfqgi2dh-vexcybpg7itldzz0n8io5jwlu3ehm1c-2000x1250.jpg");
 }
 .cid-rZ4dtABDg3 H1 {
   color: #272727;
 }
 .cid-rZ4eJsPdje {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #ffffff;
 }
 .cid-rZ4eJsPdje h2 {
@@ -1182,8 +1182,8 @@ section.lazy-placeholder:after {
   }
 }
 .cid-rZ4gAdgm1U {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #ffffff;
 }
 .cid-rZ4gAdgm1U div.b {
@@ -1286,5 +1286,5 @@ section.lazy-placeholder:after {
   background-color: #2e2e2e;
 }
 .cid-rZ4io7qj0l {
-  background-image: url("../../../assets/images/playing-cards-deck-table-2560x1600-2000x1250.jpg");
+  background-image: url("../../../assets/images/mbr-1920x1920.png");
 }
