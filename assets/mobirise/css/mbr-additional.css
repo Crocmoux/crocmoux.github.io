@@ -1116,6 +1116,9 @@ section.lazy-placeholder:after {
 .cid-rZ4dtABDg3 {
   background-image: url("../../../assets/images/thumb-1920-428991-1920x1200.jpg");
 }
+.cid-rZ4dtABDg3 H1 {
+  color: #272727;
+}
 .cid-rZ4eJsPdje {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -1284,9 +1287,4 @@ section.lazy-placeholder:after {
 }
 .cid-rZ4io7qj0l {
   background-image: url("../../../assets/images/playing-cards-deck-table-2560x1600-2000x1250.jpg");
-}
-.cid-rZ4gg10MPF {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background-color: #2e2e2e;
 }
