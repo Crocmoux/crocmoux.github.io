@@ -60,11 +60,9 @@
         else if ($(input).attr('name') == 'pass') {
                 if ($(input).val() != "") {
                     pass1 = $(input).val()
-                    console.log("Pass =", pass1);
                     return true;
                 }
                 else { 
-                    console.log("Else Pass =", $(input).val()) 
                     return false;
                 }
             }
@@ -73,18 +71,14 @@
         else if ($(input).attr('name') == 'confirmpass') {
                 if ($(input).val() != "") {
                     var pass2 = $(input).val();
-                    console.log("ConfirmPass =", pass2);
                     if (pass1 == pass2) {
-                        console.log("match");
                         return true;
                     }
                     else {
-                        console.log("do not match", pass1, pass2);
                         return false;
                     }
                 }
                 else { 
-                    console.log("Else ConfirmPass =", $(input).val()) ;
                     return false;
                 }
             }
@@ -92,7 +86,6 @@
         else {
             if($(input).val().trim() == ''){
                 var other = $(input).val()
-                console.log("Other =", other);
                 return false;
             }
         } 
