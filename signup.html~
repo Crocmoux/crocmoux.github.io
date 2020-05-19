@@ -50,8 +50,8 @@
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Mot de passe différent">
-						<input class="input100" type="password" name="confirmpass" placeholder="Confirmer le mot de passe">
+					<div class="wrap-input100 validate-input" data-validate="Veuillez confirmer le mot de passe">
+						<input class="input100" type="password" name="confirmpass" placeholder="Mot de passe différent">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
