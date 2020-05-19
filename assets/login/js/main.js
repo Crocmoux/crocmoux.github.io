@@ -15,8 +15,8 @@
             }
         })    
     })
-  
-  
+    
+    
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
@@ -37,8 +37,8 @@
 
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
-           hideValidate(this);
-        });
+         hideValidate(this);
+     });
     });
 
     var mail = ""
@@ -58,30 +58,44 @@
 
         /*[ Check pass ]*/
         else if ($(input).attr('name') == 'pass') {
-                if ($(input).val() != "") {
-                    pass1 = $(input).val()
+            if ($(input).val() != "") {
+                pass1 = $(input).val()
+                return true;
+            }
+            else { 
+                return false;
+            }
+        }
+
+        /*[ Check createpass ]*/
+        else if ($(input).attr('name') == 'createpass') {
+            /* To check a password between 7 to 25 characters which contain at least one numeric digit and a special character*/
+            if($(input).val().trim().match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,25}$/)) {
+                pass1 = $(input).val()
+                console.log("Create Pass =", pass1);
+                return true;
+            }
+            else {
+                console.log("Else CreatePass =", $(input).val())
+                return false;
+            }
+        }
+
+        /*[ Check confirm pass ]*/
+        else if ($(input).attr('name') == 'confirmpass') {
+            if ($(input).val() != "") {
+                var pass2 = $(input).val();
+                if (pass1 == pass2) {
                     return true;
                 }
-                else { 
+                else {
                     return false;
                 }
             }
-
-       /*[ Check confirm pass ]*/
-        else if ($(input).attr('name') == 'confirmpass') {
-                if ($(input).val() != "") {
-                    var pass2 = $(input).val();
-                    if (pass1 == pass2) {
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-                else { 
-                    return false;
-                }
+            else { 
+                return false;
             }
+        }
 
         else {
             if($(input).val().trim() == ''){
