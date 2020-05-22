@@ -9,12 +9,9 @@ sed -i '' -e 's/<p class="mbr-author-name pt-4 mb-2 mbr-fonts-style display-7">&
 sed -i '' -e 's/<p class="mbr-author-desc mbr-fonts-style display-7">&nbsp;<\/p>//g' ./index.html
 
 # On supprime les commentaires inutiles
-sed -i '' -e '/Site made with Mobirise Website Builder/d' ./index.html
-sed -i '' -e '/Site made with Mobirise Website Builder/d' ./404.html
-sed -i '' -e '/<meta name="generator"/d' ./index.html
-sed -i '' -e '/<meta name="generator"/d' ./404.html
-sed -i '' -e 's/<section class="engine".*<\/a><\/section>//g' ./index.html
-sed -i '' -e 's/<section class="engine".*<\/a><\/section>//g' ./404.html
+sed -i '' -e '/Site made with Mobirise Website Builder/d' *.html
+sed -i '' -e '/<meta name="generator"/d' *.html
+sed -i '' -e 's/<section class="engine".*<\/a><\/section>//g' *.html
 sed -i '' -e 's/if(!document.getElementById("top-1")).*)}//g' ./assets/theme/js/script.js
 
 # On supprime les lignes vides
