@@ -4,26 +4,33 @@
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username et password envoyé depuis le form 
-      
+ 
+   if (!$db) {
+      die("Connection failed: " . mysqli_connect_error());
+   } else { echo "SUCESSED"; }
+ 
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT id FROM Accounts WHERE name = '$myusername' and password = '$mypassword'";
+      echo "USER =  $myusername";
+      echo "PASSWORD = $mypassword";
+
+      $sql = "SELECT * FROM `Accounts` WHERE `Name` = '$myusername'";
       $result = mysqli_query($db,$sql);
-      echo $result;
+
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
+      echo "COUNT = $count";
       
       // Si il y a un résultat qui match avec $myusername et $mypassword 		
       if($count == 1) {
-         session_register("myusername");
+         //session_register("myusername");
          $_SESSION['login_user'] = $myusername;
          header("location: welcome.php");
       }else {
 	$error = "Login ou Password invalide";
-	echo $error;
+	//echo $error;
       }
    }
 ?>
