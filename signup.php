@@ -7,7 +7,7 @@
  
 	   if (!$db) {
 	      die("Connection failed: " . mysqli_connect_error());
-	   } else { echo "Connexion SUCESSED - "; }
+	   } //else { echo "Connexion SUCESSED - "; }
 	 
 	      $myusername = mysqli_real_escape_string($db,$_POST['username']);
 	      $mypassword = password_hash(mysqli_real_escape_string($db,$_POST['confirmpass']), PASSWORD_DEFAULT); 
@@ -21,14 +21,17 @@
 	      $active = $row['active'];
 	      
 	      $count = mysqli_num_rows($result);
-	      echo "COUNT = $count";
 	      	
 	      if($count == 1) {
 	         echo "MAIL DEJA UTILISE";
 	      }else {
-		    $sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`) VALUES ('$myusername','$myemail', '$mypassword')";
+	      	$myActivationKey = md5(rand(0,1000)); // Genere une clé aléatiure de 32 caractères
+		    $sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`, `Status`, `EmailActivationKey`) VALUES ('$myusername','$myemail', '$mypassword', 0, '$myActivationKey')";
 	        $result = mysqli_query($db,$sql2);
-	        header("location: signin.php");
+	        $_SESSION['mail_username'] = $myusername;
+	        $_SESSION['mail_email'] = $myemail;
+	        $_SESSION['mail_ActivationKey'] = $myActivationKey;
+	        header("location: inscriptionMail.php");
 	    }
    }
 ?>
