@@ -1,53 +1,42 @@
 <?php
    include("config.php");
    session_start();
-   $badID = 0;
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username et password envoyé depuis le form 
  
-   if (!$db) {
-      die("Connection failed: " . mysqli_connect_error());
-   } else { echo "SUCESSED"; echo "<br />"; }
- 
-      $myemail = mysqli_real_escape_string($db,$_POST['email']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+	   if (!$db) {
+	      die("Connection failed: " . mysqli_connect_error());
+	   } else { echo "Connexion SUCESSED - "; }
+	 
+	      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+	      $mypassword = password_hash(mysqli_real_escape_string($db,$_POST['confirmpass']), PASSWORD_DEFAULT); 
+		  $myemail = mysqli_real_escape_string($db,$_POST['email']); 
 
-      $sql = "SELECT * FROM `Accounts` WHERE `Mail` = '$myemail'";
-      $result = mysqli_query($db,$sql);
+		  // ON VERIFIE SI LE NAME EST DANS LA TABLE
+		  $sql = "SELECT * FROM `Accounts` WHERE `Mail` = '$myemail'";
+	      $result = mysqli_query($db,$sql);
 
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-
-      $count = mysqli_num_rows($result);
-      
-      // Si il y a un résultat qui match avec $myusername et $mypassword 		
-      if($count == 1) {
-      	 $mypasswordsql = "SELECT `Password` FROM `Accounts` WHERE `Mail` = '$myemail'";
-      	 $mypasswordResult = mysqli_query($db,$mypasswordsql);
-      	 $mypasswordhash = mysqli_fetch_row($mypasswordResult);
-
-      	 if (password_verify($mypassword, $mypasswordhash[0])) {
-      	   $mynamesql = "SELECT `Name` FROM `Accounts` WHERE `Mail` = '$myemail'";
-      	   $mynameResult = mysqli_query($db,$mynamesql);
-      	   $myusername = mysqli_fetch_row($mynameResult);
-		   $_SESSION['login_user'] = $myusername[0];
-           header("location: index.php");
-		 }
-		 else{
-		 	$badID = 1;
-		 }
-
-	  } else {
-		 	$badID = 1;
-	  }
+	      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+	      $active = $row['active'];
+	      
+	      $count = mysqli_num_rows($result);
+	      echo "COUNT = $count";
+	      	
+	      if($count == 1) {
+	         echo "MAIL DEJA UTILISE";
+	      }else {
+		    $sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`) VALUES ('$myusername','$myemail', '$mypassword')";
+	        $result = mysqli_query($db,$sql2);
+	        header("location: signin.php");
+	    }
    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Connexion | Club Bridge Montois</title>
+	<title>Inscription | Club Bridge Montois</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -66,8 +55,6 @@
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/darkly/bootstrap.css">
-
 </head>
 <body>
 	
@@ -75,40 +62,44 @@
 		<div class="container-login100" style="background-image: url('assets/images/gzlyfqgi2dh-vexcybpg7itldzz0n8io5jwlu3ehm1c-2-2000x1250.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="" method="post">
+				<!--form class="login100-form validate-form" action="index.html">-->
 					<!--<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>-->
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						CONNEXION
+						S'INSCRIRE
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Veuillez saisir votre adresse mail">
+					<div class="wrap-input100 validate-input" data-validate = "Veuillez saisir un nom d'utilisateur">
+						<input class="input100" type="text" name="username" placeholder="Utilisateur">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Veuillez saisir une adresse mail">
 						<input class="input100" type="text" name="email" placeholder="E-mail">
 						<span class="focus-input100" data-placeholder="&#xf159;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Veuillez saisir un mot de passe">
-						<input class="input100" type="password" name="password" placeholder="Mot de passe">
+					<div class="wrap-input100 validate-input" data-validate="Minimun 7 caractères, un chiffre et un caractère speciale">
+						<input class="input100" type="password" name="createpass" placeholder="Mot de passe">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
-					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox100" for="ckb1">
-							Se souvenir de moi
-						</label>
+					<div class="wrap-input100 validate-input" data-validate="Mot de passe différent">
+						<input class="input100" type="password" name="confirmpass" placeholder="Confirmer le mot de passe">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							SE CONNECTER
+							S'INSCRIRE
 						</button>
 					</div>
 
 					<div class="text-center p-t-20">
-						<a class="txt1" href="signup.html">
-							Pas encore inscrit ? Créer un compte
+						<a class="txt1" href="signin.php">
+							Déjà inscrit ? Se connecter
 						</a>
 					</div>
 
@@ -128,15 +119,6 @@
 	<script src="/assets/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/assets/login/js/main.js"></script>
-<!--===============================================================================================-->
-	<script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
-
-<?php if ($badID == 1) { ?>
-    <script type="text/javascript">
-    var hulla = new hullabaloo();
-    hulla.send("Identifiant ou mot de passe incorrect !", "warning");
-    </script> 
-<?php } ?>
 
 </body>
 </html>
