@@ -8,13 +8,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (!$db) {
 		die("Connection failed: " . mysqli_connect_error());
-	   } //else { echo "Connexion SUCESSED - "; }
+	   }
 
-	   $myusername = mysqli_real_escape_string($db,$_POST['username']);
-	   $mypassword = password_hash(mysqli_real_escape_string($db,$_POST['confirmpass']), PASSWORD_DEFAULT); 
-	   $myemail = mysqli_real_escape_string($db,$_POST['email']);
+	if ( isset($_GET['email'],$_GET['key']) ){
+	//Récupération du mail et de la key dans l'url
+	$mail = $_GET['email'];
+	$key = $_GET['key'];
+	}
+}
 
-	   if (isset($myemail,$mypassword,$myusername)){
+   $mypassword = password_hash(mysqli_real_escape_string($db,$_POST['confirmpass']), PASSWORD_DEFAULT); 
+   $myemail = mysqli_real_escape_string($db,$_POST['email']);
+
+   if ($mail != $myemail){
+	   if (isset($myemail,$mypassword)){
 
 			// ON VERIFIE SI LE NAME EST DANS LA TABLE
 	   		$sql = "SELECT * FROM `Accounts` WHERE `Mail` = '$myemail'";
@@ -26,28 +33,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	   		$count = mysqli_num_rows($result);
 
 	   		if($count == 1) {
-	   			echo "MAIL DEJA UTILISE";
-	   			$badID = 1;
-	   		}else {
-	      		$myActivationKey = md5(rand(0,1000)); // Genere une clé aléatiure de 32 caractères
-	      		$sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`, `Status`, `EmailActivationKey`) VALUES ('$myusername','$myemail', '$mypassword', 0, '$myActivationKey')";
+	   			$myActivationKey = md5(rand(0,1000)); // Genere une clé aléatiure de 32 caractères
+	      		$sql2 = "UPDATE `Accounts` set `Password` = '$mypassword' WHERE `Mail` = '$mail' AND `EmailActivationKey` = '$key'";
 	      		$result = mysqli_query($db,$sql2);
-	      		$_SESSION['mail_username'] = $myusername;
-	      		$_SESSION['mail_email'] = $myemail;
-	      		$_SESSION['mail_ActivationKey'] = $myActivationKey;
-	      		header("location: inscriptionMail.php");
+	      		header("location: index.php");
+	   		}else {
+	      		
 	      	}
 	  	}else { 
 	  		// Si on ne renseigne aucun champ (F5 par exemple)
 	  		$badID = 2;
 	  	}
-	}
-	?>
+}
+
+?>
 
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
-		<title>Inscription | Club Bridge Montois</title>
+		<title>Reinitialisation du mot de passe | Club Bridge Montois</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--===============================================================================================-->	
@@ -84,16 +88,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					</span>-->
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						S'INSCRIRE
+						REINITIALISATION DU MOT DE PASSE !
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Veuillez saisir un nom d'utilisateur">
-						<input class="input100" type="text" name="username" placeholder="Utilisateur">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
-
 					<div class="wrap-input100 validate-input" data-validate = "Veuillez saisir une adresse mail">
-						<input class="input100" type="text" name="email" placeholder="E-mail">
+						<input class="input100" type="text" name="email" placeholder="E-mail" value="<?php echo $mail; ?>" >
 						<span class="focus-input100" data-placeholder="&#xf159;"></span>
 					</div>
 
@@ -109,20 +108,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							S'INSCRIRE
+							REINITIALISER
 						</button>
-					</div>
-
-					<div class="text-center p-t-20">
-						<a class="txt1" href="signin.php">
-							Déjà inscrit ? Se connecter
-						</a>
-					</div>
-
-					<div class="text-center p-t-10">
-						<a class="txt1" href="passwordForget.php">
-							Mot de passe oublié ?
-						</a>
 					</div>
 				</form>
 			</div>
@@ -137,13 +124,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<script src="/assets/login/js/main.js"></script>
 	<!--===============================================================================================-->
 	<script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
-
-	<?php if ($badID == 1) { ?>
-		<script type="text/javascript">
-			var hulla = new hullabaloo();
-			hulla.send("Ce compte existe déjà !", "error");
-		</script> 
-	<?php } ?>
 
 	<?php if ($badID == 2) { ?>
 		<script type="text/javascript">

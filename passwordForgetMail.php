@@ -1,19 +1,23 @@
 <?php
-    session_start();
 
-    $user = $_SESSION['mail_username'];
-    $mail = $_SESSION['mail_email'];
-    $ActivationKey = $_SESSION['mail_ActivationKey'];
+session_start();
 
+$mail = $_SESSION['myemail'];
+$key = $_SESSION['key'];
+echo "$mail";
+echo "$key";
+
+if (isset($_SESSION['myemail'])){
      // Plusieurs destinataires
+
      $to  = $mail; // avec une virgule pour plusieurs personnes
 
      // Sujet
      $subject = 'Bienvenue au club de Bridge de Mont de Marsan !';
 
      // message
-     $message = '
-    <!doctype html>
+     $message = ' 
+     <!doctype html>
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
         <!-- NAME: 1 COLUMN -->
@@ -563,7 +567,7 @@
 }</style></head>
     <body>
         <!--*|IF:MC_PREVIEW_TEXT|*-->
-        <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Bienvenue au club de bridge de Mont de Marsan '.$user.'</span><!--<![endif]-->
+        <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Bienvenue au club de bridge de Mont de Marsan</span><!--<![endif]-->
         <!--*|END:IF|*-->
         <center>
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
@@ -615,12 +619,15 @@
                         
                         <td class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;" valign="top">
                         
-                            <div style="text-align: center;"><strong>Bonjour '.$user.'.</strong><br>
+                            <div style="text-align: center;"><strong>Bonjour.</strong><br>
 &nbsp;</div>
 
 <div style="text-align: center;">Bienvenue sur le site du club de bridge de Mont de Marsan !<br>
 <br>
-Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
+Vous recevez ce mail car vous avez oublié votre mot de passe.<br>
+Si ce n\'est pas le cas, veuillez ignorez ce mail.<br>
+<br>
+Sinon, veuillez cliquer sur le lien suivant pour réinitialiser votre mot de passe :</div>
 
                         </td>
                     </tr>
@@ -644,7 +651,7 @@ Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="Activer votre compte" href="http://bridgeclubmontois.fr/verify.php?email='.$mail.'&key='.$ActivationKey.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activer votre compte</a>
+                                <a class="mcnButton " title="Réinitialiser votre compte" href="http://www.bridgeclubmontois.fr/resetPassword?email='.$mail.'&key='.$key.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Réinitialiser votre compte</a>
                             </td>
                         </tr>
                     </tbody>
@@ -706,7 +713,7 @@ Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><span style="font-size:11px">Si le bouton ci dessus ne fonctionne pas, collez ceci dans votre navigateur internet :<br>
-<a href="http://bridgeclubmontois.fr" target="_blank">http://bridgeclubmontois.fr/verify.php?email='.$mail.'&key='.$ActivationKey.'</a></span><br>
+<a href="http://bridgeclubmontois.fr" target="_blank">http://bridgeclubmontois.fr/resetPassword.php?email='.$mail.'&key='.$key.'</a></span><br>
 <span style="font-size:11px">Cette email a été généré automatiquement, merci de ne pas y répondre.</span></div>
 
                         </td>
@@ -794,10 +801,11 @@ Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
      // Envoi
      mail($to, $subject, $message, implode("\r\n", $headers));
 
-     unset($_SESSION['mail_username']);
-     //unset($_SESSION['mail_email']);
-     unset($_SESSION['mail_ActivationKey']);
-     header("location: mailsend.php");
+     header("location: resetPasswordMailSend.php");
 
+}
+else {
+  header("location: index.php");  
+}
 
 ?>

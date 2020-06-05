@@ -222,14 +222,37 @@
   <script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
 
 <!-- Popup de bienvenue -->
-  <?php if (isset($_SESSION['login_user'])){ ?>
+  <?php
+   if (isset($_SESSION['login_user'])){ ?>
     <script type="text/javascript">
     var hulla = new hullabaloo();
     hulla.send("Bonjour <?php echo $_SESSION['login_user']; ?>", "success");
     </script> 
-<?php } ?>
-    <!--hulla.send("jQuery Hullabaloo.js Plugin Examples", "info");
-    hulla.send("A Bootstrap 4 Notification Plugin", "warning");-->
-  </script> 
+  <?php } ?>
+
+<!-- Popup de validation d'email -->
+  <?php 
+  if (isset($_SESSION["AccountVerify"])){ 
+      if ($_SESSION["AccountVerify"] == 1){
+      ?>
+      <script type="text/javascript">
+      var hulla = new hullabaloo();
+      hulla.send("Votre compte a bien été créé !", "info");
+      </script> 
+
+      <?php
+      }
+      else {
+      ?>
+      <script type="text/javascript">
+      var hulla = new hullabaloo();
+      hulla.send("Une erreur est survenue !", "info");
+      </script> 
+
+      <?php }}
+
+unset($_SESSION['AccountVerify']); ?>
 </body>
 </html>
+  <!--hulla.send("jQuery Hullabaloo.js Plugin Examples", "info");
+  hulla.send("A Bootstrap 4 Notification Plugin", "warning");-->

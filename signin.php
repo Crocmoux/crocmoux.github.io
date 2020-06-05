@@ -8,12 +8,12 @@
  
    if (!$db) {
       die("Connection failed: " . mysqli_connect_error());
-   } else { echo "SUCESSED"; echo "<br />"; }
+   }
  
       $myemail = mysqli_real_escape_string($db,$_POST['email']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
 
-      $sql = "SELECT * FROM `Accounts` WHERE `Mail` = '$myemail'";
+      $sql = "SELECT * FROM `Accounts` WHERE `Mail` = '$myemail' AND `Status` = 1";
       $result = mysqli_query($db,$sql);
 
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -39,7 +39,7 @@
 		 }
 
 	  } else {
-		 	$badID = 1;
+		 	$badID = 2;
 	  }
    }
 ?>
@@ -107,13 +107,13 @@
 					</div>
 
 					<div class="text-center p-t-20">
-						<a class="txt1" href="signup.html">
+						<a class="txt1" href="signup.php">
 							Pas encore inscrit ? Créer un compte
 						</a>
 					</div>
 
 					<div class="text-center p-t-10">
-						<a class="txt1" href="passwordForget.html">
+						<a class="txt1" href="passwordForget.php">
 							Mot de passe oublié ?
 						</a>
 					</div>
@@ -134,7 +134,14 @@
 <?php if ($badID == 1) { ?>
     <script type="text/javascript">
     var hulla = new hullabaloo();
-    hulla.send("Identifiant ou mot de passe incorrect !", "warning");
+    hulla.send("Mot de passe incorrect !", "warning");
+    </script> 
+<?php } ?>
+
+<?php if ($badID == 2) { ?>
+    <script type="text/javascript">
+    var hulla = new hullabaloo();
+    hulla.send("Adresse mail incorrecte ou invalide !", "warning");
     </script> 
 <?php } ?>
 
