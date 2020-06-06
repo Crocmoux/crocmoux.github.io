@@ -25,14 +25,14 @@
         ele: "body",
         offset: {
           from: "top",
-          amount: 20
+          amount: 80
         },
         align: "right",
         width: 250,
-        delay: 5000,
+        delay: 7000,
         allow_dismiss: true,
         stackup_spacing: 10,
-        text: "Произошла неизвестная ошибка.",
+        text: "..........",
         icon: {
           success: "fa fa-check-circle",
           info: "fa fa-info-circle",

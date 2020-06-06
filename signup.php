@@ -68,8 +68,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		<!--===============================================================================================-->
 		<link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
 		<link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/darkly/bootstrap.css">
 
+  		<!-- Gestion des popups -->
+  		<link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+  		<link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
 
 	</head>
 	<body>

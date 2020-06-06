@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					</div>
 
 					<div class="text-center p-t-20">
-						<a class="txt1" href="signin.html">
+						<a class="txt1" href="signin.php">
 							Déjà inscrit ? Se connecter
 						</a>
 					</div>

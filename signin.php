@@ -27,6 +27,7 @@
       	 $mypasswordResult = mysqli_query($db,$mypasswordsql);
       	 $mypasswordhash = mysqli_fetch_row($mypasswordResult);
 
+      	 // Si les mots de passes sont identiques
       	 if (password_verify($mypassword, $mypasswordhash[0])) {
       	   $mynamesql = "SELECT `Name` FROM `Accounts` WHERE `Mail` = '$myemail'";
       	   $mynameResult = mysqli_query($db,$mynamesql);
@@ -34,10 +35,11 @@
 		   $_SESSION['login_user'] = $myusername[0];
            header("location: index.php");
 		 }
+		 // Si les mots de passes sont différents
 		 else{
 		 	$badID = 1;
 		 }
-
+	  // Si le compte n'est pas validé ou n'existe pas
 	  } else {
 		 	$badID = 2;
 	  }
@@ -66,7 +68,10 @@
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
 <!--===============================================================================================-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/darkly/bootstrap.css">
+
+  <!-- Gestion des popups -->
+    <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+    <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
 
 </head>
 <body>
@@ -141,7 +146,7 @@
 <?php if ($badID == 2) { ?>
     <script type="text/javascript">
     var hulla = new hullabaloo();
-    hulla.send("Adresse mail incorrecte ou invalide !", "warning");
+    hulla.send("Adresse mail incorrecte ou non validé !", "warning");
     </script> 
 <?php } ?>
 

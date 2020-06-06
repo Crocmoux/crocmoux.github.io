@@ -33,7 +33,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/images/gzlyfqgi2dh-vexcybpg7itldzz0n8io5jwlu3ehm1c-2-2000x1250.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="index.html">
+				<form class="login100-form validate-form" action="index.php">
 					<!--<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>-->
@@ -54,7 +54,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" href="index.php">
+						<button class="login100-form-btn">
 							ACCUEIL
 						</button>
 					</div>

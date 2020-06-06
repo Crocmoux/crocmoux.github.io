@@ -12,7 +12,7 @@
   <link rel="shortcut icon" href="/assets/images/png-transparent-playing-card-card-game-hearts-spades-deck-of-cards-game-heart-hearts-128x128-1.png" type="image/x-icon">
   <meta name="description" content="">
   <title>Accueil | Club Bridge Montois</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/darkly/bootstrap.css">
+    
   <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
@@ -20,7 +20,12 @@
   <link rel="stylesheet" href="/assets/tether/tether.min.css">
   <link rel="stylesheet" href="/assets/dropdown/css/style.css">
   <link rel="stylesheet" href="/assets/theme/css/style.css">
-  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  <!-- Gestion des popups -->
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
 
 </head>
 <body>
@@ -226,7 +231,7 @@
    if (isset($_SESSION['login_user'])){ ?>
     <script type="text/javascript">
     var hulla = new hullabaloo();
-    hulla.send("Bonjour <?php echo $_SESSION['login_user']; ?>", "success");
+    hulla.send("Bonjour <?php echo $_SESSION['login_user']; ?> !", "success");
     </script> 
   <?php } ?>
 
@@ -246,12 +251,15 @@
       ?>
       <script type="text/javascript">
       var hulla = new hullabaloo();
-      hulla.send("Une erreur est survenue !", "info");
+      hulla.send("Une erreur est survenue !", "error");
       </script> 
 
       <?php }}
 
-unset($_SESSION['AccountVerify']); ?>
+echo $_SESSION["logout"];
+unset($_SESSION['AccountVerify']); 
+unset($_SESSION['logout']); ?>
+
 </body>
 </html>
   <!--hulla.send("jQuery Hullabaloo.js Plugin Examples", "info");
