@@ -783,6 +783,7 @@ Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
 
      // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
      $headers[] = 'MIME-Version: 1.0';
+     //$Headers[] = "MIME-version: 1.0\r\n".'Date: '.date('r')."\r\n";
      //$headers[] = 'Content-type: text/html; charset=iso-8859-1';
      $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
