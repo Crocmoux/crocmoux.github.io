@@ -71,7 +71,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="index.php">
+                    <a class="nav-link link text-white display-4" href="index.html">
                         Accueil</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="faq.html" data-toggle="dropdown-submenu" aria-expanded="false">A propos</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="leclub.html" aria-expanded="false">Le club</a><a class="text-white dropdown-item display-4" href="faq.html">Règles &amp; FAQ</a><a class="text-white dropdown-item display-4" href="contact.html" aria-expanded="false">Contact</a></div></li><li class="nav-item"><a class="nav-link link text-white display-4" href="actualites.html">
