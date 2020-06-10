@@ -781,16 +781,23 @@ Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
 </html>
      ';
 
+     // En-têtes additionnels
      // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+
      $headers[] = 'MIME-Version: 1.0';
      //$Headers[] = "MIME-version: 1.0\r\n".'Date: '.date('r')."\r\n";
      //$headers[] = 'Content-type: text/html; charset=iso-8859-1';
      $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
-
-     // En-têtes additionnels
-     $headers[] = 'To: '.$user.' <'.$mail.'>';
+     $headers[] = 'Reply-To: BridgeClubMontois <support@bridgeclubmontois.fr>'; 
+     $headers[] = 'Return-Path: BridgeClubMontois <support@bridgeclubmontois.fr>'; 
      $headers[] = 'From: BridgeClubMontois <support@bridgeclubmontois.fr>';
+
+     $headers[] = 'Organization: BridgeClubMontois';
+     $headers[] = 'X-Priority: 3';
+     $headers[] = 'X-Mailer: PHP'. phpversion(); 
+
+     $headers[] = 'To: '.$user.' <'.$mail.'>';
 
      // Envoi
      mail($to, $subject, $message, implode("\r\n", $headers));

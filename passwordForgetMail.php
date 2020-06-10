@@ -793,10 +793,16 @@ Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
      //$headers[] = 'Content-type: text/html; charset=iso-8859-1';
      $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
+     $headers[] = 'Reply-To: BridgeClubMontois <support@bridgeclubmontois.fr>'; 
+     $headers[] = 'Return-Path: BridgeClubMontois <support@bridgeclubmontois.fr>'; 
+     $headers[] = 'From: BridgeClubMontois <support@bridgeclubmontois.fr>';
+
+     $headers[] = 'Organization: BridgeClubMontois';
+     $headers[] = 'X-Priority: 3';
+     $headers[] = 'X-Mailer: PHP'. phpversion(); 
 
      // En-têtes additionnels
      $headers[] = 'To: '.$user.' <'.$mail.'>';
-     $headers[] = 'From: BridgeClubMontois <support@bridgeclubmontois.fr>';
 
      // Envoi
      mail($to, $subject, $message, implode("\r\n", $headers));
