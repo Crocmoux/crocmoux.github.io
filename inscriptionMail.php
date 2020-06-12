@@ -644,7 +644,7 @@ Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="Activer votre compte" href="http://bridgeclubmontois.fr/verify.php?email='.$mail.'&key='.$ActivationKey.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activer votre compte</a>
+                                <a class="mcnButton " title="Activer votre compte" href="https://bridgeclubmontois.fr/verifyAccount.php?email='.$mail.'&key='.$ActivationKey.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activer votre compte</a>
                             </td>
                         </tr>
                     </tbody>
@@ -706,7 +706,7 @@ Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><span style="font-size:11px">Si le bouton ci dessus ne fonctionne pas, collez ceci dans votre navigateur internet :<br>
-<a href="http://bridgeclubmontois.fr" target="_blank">http://bridgeclubmontois.fr/verify.php?email='.$mail.'&key='.$ActivationKey.'</a></span><br>
+<a href="https://bridgeclubmontois.fr" target="_blank">https://bridgeclubmontois.fr/verifyAccount.php?email='.$mail.'&key='.$ActivationKey.'</a></span><br>
 <span style="font-size:11px">Cette email a été généré automatiquement, merci de ne pas y répondre.</span></div>
 
                         </td>
@@ -749,7 +749,7 @@ Afin d\'activer votre compte veuillez cliquer sur le lien ci dessous :</div>
 support@<em>Bridgeclubmontois.fr</em><br>
 <br>
 Vous souhaitez vous désinscrire de notre site ?<br>
-Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
+Vous pouvez le faire en <a href="https://bridgeclubmontois.fr/deleteAccount.php?email='.$mail.'&key='.$ActivationKey.'">cliquant ici !</a>
                         </td>
                     </tr>
                 </tbody></table>

@@ -4,8 +4,6 @@ session_start();
 
 $mail = $_SESSION['myemail'];
 $key = $_SESSION['key'];
-echo "$mail";
-echo "$key";
 
 if (isset($_SESSION['myemail'])){
      // Plusieurs destinataires
@@ -651,7 +649,7 @@ Sinon, veuillez cliquer sur le lien suivant pour réinitialiser votre mot de pas
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
-                                <a class="mcnButton " title="Réinitialiser votre compte" href="http://www.bridgeclubmontois.fr/resetPassword?email='.$mail.'&key='.$key.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Réinitialiser votre compte</a>
+                                <a class="mcnButton " title="Réinitialiser votre compte" href="https://www.bridgeclubmontois.fr/resetPassword?email='.$mail.'&key='.$key.'" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Réinitialiser votre compte</a>
                             </td>
                         </tr>
                     </tbody>
@@ -713,7 +711,7 @@ Sinon, veuillez cliquer sur le lien suivant pour réinitialiser votre mot de pas
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
                             <div style="text-align: center;"><span style="font-size:11px">Si le bouton ci dessus ne fonctionne pas, collez ceci dans votre navigateur internet :<br>
-<a href="http://bridgeclubmontois.fr" target="_blank">http://bridgeclubmontois.fr/resetPassword.php?email='.$mail.'&key='.$key.'</a></span><br>
+<a href="https://bridgeclubmontois.fr" target="_blank">https://bridgeclubmontois.fr/resetPassword.php?email='.$mail.'&key='.$key.'</a></span><br>
 <span style="font-size:11px">Cette email a été généré automatiquement, merci de ne pas y répondre.</span></div>
 
                         </td>
@@ -756,7 +754,7 @@ Sinon, veuillez cliquer sur le lien suivant pour réinitialiser votre mot de pas
 support@<em>Bridgeclubmontois.fr</em><br>
 <br>
 Vous souhaitez vous désinscrire de notre site ?<br>
-Vous pouvez le faire en suivant <a href="*|UNSUB|*">cliquant ici !</a>
+Vous pouvez le faire en <a href="https://bridgeclubmontois.fr/deleteAccount.php?email='.$mail.'&key='.$key.'">cliquant ici !</a>
                         </td>
                     </tr>
                 </tbody></table>

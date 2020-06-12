@@ -228,12 +228,13 @@
 
 <!-- Popup de bienvenue -->
   <?php
-   if (isset($_SESSION['login_user'])){ ?>
-    <script type="text/javascript">
-    var hulla = new hullabaloo();
-    hulla.send("Bonjour <?php echo $_SESSION['login_user']; ?> !", "success");
-    </script> 
-  <?php } ?>
+   if (isset($_SESSION['login_user'],$_SESSION['first_connexion'])){
+      if ($_SESSION['first_connexion'] == 1){ ?>
+        <script type="text/javascript">
+        var hulla = new hullabaloo();
+        hulla.send("Bonjour <?php echo $_SESSION['login_user']; ?> !", "success");
+        </script> 
+  <?php }} ?>
 
 <!-- Popup de validation d'email -->
   <?php 
@@ -254,11 +255,42 @@
       hulla.send("Une erreur est survenue !", "error");
       </script> 
 
+      <?php }} ?>
+
+<!-- Popup de suppression de compte -->
+  <?php 
+  if (isset($_SESSION["deletedCount"])){ 
+      if ($_SESSION["deletedCount"] == 1){
+      ?>
+      <script type="text/javascript">
+      var hulla = new hullabaloo();
+      hulla.send("Votre compte a bien été supprimé !", "success");
+      </script> 
+
+      <?php
+      }
+      else if($_SESSION["deletedCount"] == 0){
+      ?>
+      <script type="text/javascript">
+      var hulla = new hullabaloo();
+      hulla.send("Votre compte n'a pas été supprimé  !", "info");
+      </script> 
+      
+      <?php
+      }
+      else if($_SESSION["deletedCount"] == 2){
+      ?>
+      <script type="text/javascript">
+      var hulla = new hullabaloo();
+      hulla.send("Votre compte a déjà été supprimé  !", "info");
+      </script> 
+
       <?php }}
 
-echo $_SESSION["logout"];
-unset($_SESSION['AccountVerify']); 
-unset($_SESSION['logout']); ?>
+unset($_SESSION['AccountVerify']);
+unset($_SESSION['first_connexion']);
+unset($_SESSION['logout']); 
+unset($_SESSION['deletedCount']); ?>
 
 </body>
 </html>

@@ -33,6 +33,7 @@
       	   $mynameResult = mysqli_query($db,$mynamesql);
       	   $myusername = mysqli_fetch_row($mynameResult);
 		   $_SESSION['login_user'] = $myusername[0];
+		   $_SESSION['first_connexion'] = 1;
            header("location: index.php");
 		 }
 		 // Si les mots de passes sont différents
