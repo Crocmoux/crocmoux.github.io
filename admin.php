@@ -130,7 +130,7 @@
               echo "</td>";
 
               //echo "<td class=\"body-item mbr-fonts-style display-7\">".$row['EmailActivationKey']."</td>";
-              echo "<td> <button type=\"button\" name=\"delete\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs delete\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: red !important;border-color: black !important; !important\">SUPPRIMER</button></td>";
+              echo "<td> <button type=\"button\" name=\"delete\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs delete\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: red !important;border-color: black !important; !important\">SUPPRIMER</button>"; if ($row['Status'] == "0"){ echo "&nbsp;&nbsp;<button type=\"button\" name=\"enreg\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs enreg\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: blue !important;border-color: black !important; !important\">ENREGISTRER</button>"; } echo "</td>";
               echo "</tr>";
             }
             ?>

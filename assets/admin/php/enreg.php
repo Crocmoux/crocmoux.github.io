@@ -2,9 +2,9 @@
 	include("../../../config.php");
 	session_start();
 
- 	if (isset($_POST['userid'])){
-		$delete_user = $_POST['userid'];
-		$sql = "DELETE FROM `Accounts` WHERE `id` = '$delete_user'";
+  if (isset($_POST['userid'])){
+		$enreg_user = $_POST['userid'];
+		$sql = "UPDATE `Accounts` set `Status` = '1' WHERE `id` = '$enreg_user'";
 
 		if (mysqli_query($db,$sql)){
 			echo "YES";
