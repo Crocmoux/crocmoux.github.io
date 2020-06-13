@@ -83,7 +83,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 							Déjà inscrit ? Se connecter
 						</a>
 					</div>
-
 				</div>
 			</form>
 		</div>

@@ -5,7 +5,7 @@ session_start();
 $mail = $_SESSION['myemail'];
 $key = $_SESSION['key'];
 
-if (isset($_SESSION['myemail'])){
+if (isset($_SESSION['myemail'],$_SESSION['key'])){
      // Plusieurs destinataires
 
      $to  = $mail; // avec une virgule pour plusieurs personnes
@@ -809,7 +809,8 @@ Vous pouvez le faire en <a href="https://bridgeclubmontois.fr/deleteAccount.php?
 
 }
 else {
-  header("location: index.php");  
+  header("location: 404.html");  
 }
+unset($_SESSION['key']);
 
 ?>

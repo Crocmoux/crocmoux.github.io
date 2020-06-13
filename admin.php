@@ -8,30 +8,6 @@
 
   $sql = "SELECT * FROM `Accounts`";
   $result = mysqli_query($db,$sql);
-
-  /*
-  echo "<table border='1'><tr><th>Firstname</th><th>Lastname</th></tr>";
-
-  while($row = mysqli_fetch_array($result)){
-    echo "<tr>";
-    echo "<td>" . $row['Name'] . "</td>";
-    echo "<td>" . $row['Mail'] . "</td>";
-    echo "</tr>";
-  }
-  echo "</table>";
-
-
-  while($table = $row) { // go through each row that was returned in $result
-    echo($table[0] . "<br>");    // print the table that was returned on that row.
-  }
-
-  //$showtables = mysql_query($db,$sql);
-  //$row = mysqli_fetch_array($showtables,MYSQLI_ASSOC);
-  
-  /*while($table = $row) { // go through each row that was returned in $result
-    echo($table[0] . "<br>");    // print the table that was returned on that row.
-  }
-*/
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +102,8 @@
               //echo "<td class=\"body-item mbr-fonts-style display-7\">".$row['Password']."</td>";
               
               echo "<td class=\"body-item mbr-fonts-style display-7\" style=\"vertical-align:middle;\">";
-              if ($row['Status'] == "1"){ echo "ENREGISTRÉ"; }else{ echo "NON ENREGISTRÉ";}
+              if ($row['Status'] == "1"){ echo "<span style=\"background-color:lime;\">ENREGISTRÉ</span>"; }
+              else{ echo "<span style=\"background-color:coral;\">NON ENREGISTRÉ</span>";}
               echo "</td>";
 
               //echo "<td class=\"body-item mbr-fonts-style display-7\">".$row['EmailActivationKey']."</td>";

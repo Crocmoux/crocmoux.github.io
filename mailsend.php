@@ -1,8 +1,40 @@
 <?php
+	include("config.php");
     session_start();
-    if (!isset($_SESSION['mail_email'])) {
-    	header("location: index.php");
+
+	print_r($_POST);
+    echo "POST NAME : ";
+    echo $_POST['post_username'];
+
+    if (!isset($_SESSION['mail_username'],$_SESSION['mail_email'],$_SESSION['mail_ActivationKey'])) {
+    	echo "NO SESSION";
+    	    if (!isset($_POST['post_username'],$_POST['post_mail'],$_POST['post_ActivationKey'])) {
+    	    	header("location: index.php");
+    	    	exit;
+    	    }
+    } else {
+    	$user = $_SESSION['mail_username'];
+    	$mail = $_SESSION['mail_email'];
+    	$ActivationKey = $_SESSION['mail_ActivationKey'];
     }
+    
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+    	if (!$db) {
+        	die("Connection failed: " . mysqli_connect_error());
+      	}
+
+		if(isset($_POST['mail'])){
+         	//on renvoie le mail
+	      	$_SESSION['mail_username'] = $_POST['post_username'];
+	  		$_SESSION['mail_email'] = $_POST['post_mail'];
+	  		$_SESSION['mail_ActivationKey'] = $_POST['post_ActivationKey'];
+	  		header("location: inscriptionMail.php");
+	  		exit;
+    	} else if(isset($_POST['home'])){
+         //on renvoie a l'accueil
+         header("location: index.php");
+      }
+   }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +65,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/images/gzlyfqgi2dh-vexcybpg7itldzz0n8io5jwlu3ehm1c-2-2000x1250.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="index.php">
+				<form class="login100-form validate-form" action="" method="post">
 					<!--<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>-->
@@ -49,16 +81,22 @@
 					</div>
 					<div class="text-center p-t-5 p-b-27">
 						<a class="txt2" style="color:white">
-							Veuillez cliquer sur le lien envoyé par mail pour confirmer votre inscription.
+							Veuillez cliquer sur le lien envoyé par mail pour confirmer votre inscription. N'oubliez pas de regarder vos messages indésirables !
 						</a>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							ACCUEIL
-						</button>
-					</div>
-
+						<input type="hidden" name="post_username" value="<?php echo $user; ?>" />
+						<input type="hidden" name="post_mail" value="<?php echo $mail; ?>" />
+						<input type="hidden" name="post_ActivationKey" value="<?php echo $ActivationKey; ?>" />
+						<button class="login100-form-btn" type="submit" name="mail">
+                     		RENVOYER UN MAIL
+                  		</button>
+                  		&nbsp;
+                  		&nbsp;
+                  		<button class="login100-form-btn" type="submit" name="home" value="">
+                     		ACCUEIL
+                  		</button>
 					</div>
 				</form>
 			</div>
@@ -73,7 +111,11 @@
 	<script src="/assets/login/js/main.js"></script>
 
 
-	<?php unset($_SESSION['mail_email']); ?>
+	<?php 
+		unset($_SESSION['mail_username']);
+		unset($_SESSION['mail_email']); 
+		unset($_SESSION['mail_ActivationKey']); 
+	?>
 
 </body>
 </html>

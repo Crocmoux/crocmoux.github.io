@@ -50,7 +50,7 @@
 
 					<div class="text-center p-t-5 p-b-27">
 						<a class="txt2" style="color:white">
-							Veuillez cliquer sur le lien envoyé par mail pour confirmer réinitialiser votre mot de passe.
+							Veuillez cliquer sur le lien envoyé par mail pour confirmer la réinitialisation de votre mot de passe.
 						</a>
 					</div>
 
