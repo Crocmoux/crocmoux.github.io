@@ -810,6 +810,8 @@
       //unset($_SESSION['mail_username']);
       //unset($_SESSION['mail_email']);
       //unset($_SESSION['mail_ActivationKey']);
+      $_SESSION['mail_send'] = 1;
       header("location: mailsend.php");
+      exit;
     }
 ?>

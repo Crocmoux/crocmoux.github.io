@@ -33,13 +33,21 @@
         allow_dismiss: true,
         stackup_spacing: 10,
         text: "..........",
-        icon: {
+        /*icon: {
           success: "fa fa-check-circle",
           info: "fa fa-info-circle",
           warning: "fa fa-life-ring",
           danger: "fa fa-exclamation-circle",
           light: "fa fa-sun",
           dark: "fa fa-moon"
+        },*/
+        icon: {
+          success: "",
+          info: "",
+          warning: "",
+          danger: "",
+          light: "",
+          dark: ""
         },
         status: "danger",
         alertClass: "", 

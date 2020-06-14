@@ -20,14 +20,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	   $isMailInDB = mysqli_num_rows($result);
 
 	   if($isMailInDB == 1) {
-	   	$_SESSION['myemail'] = $myemail;
-	   	$sql = "SELECT `EmailActivationKey` FROM `Accounts` WHERE `Mail` = '$myemail'";
-  	    $result = mysqli_query($db,$sql);
-  	    $key = mysqli_fetch_row($result);
-	    $_SESSION['key'] = $key[0];
-	   	header("location: passwordForgetMail.php");
+			$_SESSION['myemail'] = $myemail;
+		   	$sql = "SELECT `EmailActivationKey` FROM `Accounts` WHERE `Mail` = '$myemail'";
+	  	    $result = mysqli_query($db,$sql);
+	  	    $key = mysqli_fetch_row($result);
+		    $_SESSION['key'] = $key[0];
+		   	header("location: passwordForgetMail.php");
+	   } else {
+	   		$_SESSION['error_mail'] = 1;
 	   }
-}
+	}
 ?>
 
 	   <!DOCTYPE html>
@@ -52,6 +54,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	   	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	   	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
 	   	<!--===============================================================================================-->
+
+  		<!-- Gestion des popups -->
+  		<link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+  		<link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
+
 	   </head>
 	   <body>
 
@@ -95,14 +102,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="/assets/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
 <script src="/assets/login/js/main.js"></script>
+<script src="/assets/login/js/main.js"></script>
+<script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
 
+<!-- Popup de bienvenue -->
 <?php
-   if (isset($_SESSION['myemail'])){ ?>
-    <script type="text/javascript">
-    var hulla = new hullabaloo();
-    hulla.send("Adresse mail Invalide !", "error");
-    </script> 
-<?php } ?>
+	if (isset($_SESSION['error_mail'])){
+	if ($_SESSION['error_mail'] == 1){ ?>
+	<script type="text/javascript">
+	var hulla = new hullabaloo();
+	hulla.send("Email invalide !", "warning");
+	</script> 
+<?php }} ?>
 
+<?php 
+	unset($_SESSION['error_mail']);
+?>
 </body>
 </html>

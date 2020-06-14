@@ -805,12 +805,16 @@ Vous pouvez le faire en <a href="https://bridgeclubmontois.fr/deleteAccount.php?
      // Envoi
      mail($to, $subject, $message, implode("\r\n", $headers));
 
+    $_SESSION['mail_send'] = 1;
      header("location: resetPasswordMailSend.php");
 
 }
 else {
   header("location: 404.html");  
 }
-unset($_SESSION['key']);
+// Variable de session utilisé dans resetPasswordMailSend.php et détruit
+//unset($_SESSION['key']);
+//unset($_SESSION['myemail']);
+
 
 ?>

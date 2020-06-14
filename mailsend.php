@@ -2,12 +2,7 @@
 	include("config.php");
     session_start();
 
-	print_r($_POST);
-    echo "POST NAME : ";
-    echo $_POST['post_username'];
-
     if (!isset($_SESSION['mail_username'],$_SESSION['mail_email'],$_SESSION['mail_ActivationKey'])) {
-    	echo "NO SESSION";
     	    if (!isset($_POST['post_username'],$_POST['post_mail'],$_POST['post_ActivationKey'])) {
     	    	header("location: index.php");
     	    	exit;
@@ -59,6 +54,11 @@
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
 <!--===============================================================================================-->
+  
+  <!-- Gestion des popups -->
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
+
 </head>
 <body>
 	
@@ -109,12 +109,23 @@
 	<script src="/assets/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/assets/login/js/main.js"></script>
+	<script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
 
+	<!-- Popup de bienvenue -->
+	<?php
+		if (isset($_SESSION['mail_send'])){
+		if ($_SESSION['mail_send'] == 1){ ?>
+		<script type="text/javascript">
+		var hulla = new hullabaloo();
+		hulla.send("Email envoyé !", "success");
+		</script> 
+	<?php }} ?>
 
 	<?php 
 		unset($_SESSION['mail_username']);
 		unset($_SESSION['mail_email']); 
-		unset($_SESSION['mail_ActivationKey']); 
+		unset($_SESSION['mail_ActivationKey']);
+		unset($_SESSION['mail_send']); 
 	?>
 
 </body>

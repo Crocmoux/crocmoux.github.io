@@ -49,7 +49,7 @@ $(document).ready(function(){
 		 				$(el).closest('button').fadeOut(500,function(){
 		 					$(this).remove();
 		 				});		 					
-		 				$(el).closest('tr').find("td:eq(3)").html('ENREGISTRÉ');
+		 				$(el).closest('tr').find("td:eq(3)").html('<span style=\"background-color:lime;\">ENREGISTRÉ</span>');
 					}else{
 						alert('Une Erreur est survenue !');
 					}

@@ -1,8 +1,33 @@
 <?php
+	include("config.php");
     session_start();
-    if (!isset($_SESSION['myemail'])) {
-    	header("location: index.php");
+
+    if (!isset($_SESSION['key'],$_SESSION['myemail'])) {
+    	    if (!isset($_POST['post_mail'],$_POST['post_ActivationKey'])) {
+    	    	header("location: index.php");
+    	    	exit;
+    	    }
+    } else {
+    	$mail = $_SESSION['myemail'];
+    	$ActivationKey = $_SESSION['key'];
     }
+    
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+    	if (!$db) {
+        	die("Connection failed: " . mysqli_connect_error());
+      	}
+
+		if(isset($_POST['mail'])){
+         	//on renvoie le mail
+	  		$_SESSION['myemail'] = $_POST['post_mail'];
+	  		$_SESSION['key'] = $_POST['post_ActivationKey'];
+	  		header("location: passwordForgetMail.php");
+	  		exit;
+    	} else if(isset($_POST['home'])){
+         //on renvoie a l'accueil
+         header("location: index.php");
+      }
+   }
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +52,18 @@
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
 <!--===============================================================================================-->
+
+  <!-- Gestion des popups -->
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/alert.css">
+  <link rel="stylesheet" href="/assets/notification-Hullabaloo/css/hullabaloo.css">
+  
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('assets/images/gzlyfqgi2dh-vexcybpg7itldzz0n8io5jwlu3ehm1c-2-2000x1250.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="index.php">
+				<form class="login100-form validate-form" action="" method ="post">
 					<!--<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>-->
@@ -50,14 +80,21 @@
 
 					<div class="text-center p-t-5 p-b-27">
 						<a class="txt2" style="color:white">
-							Veuillez cliquer sur le lien envoyé par mail pour confirmer la réinitialisation de votre mot de passe.
+							Veuillez cliquer sur le lien envoyé par mail pour confirmer la réinitialisation de votre mot de passe. N'oubliez pas de regarder vos messages indésirables !
 						</a>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							ACCUEIL
-						</button>
+						<input type="hidden" name="post_mail" value="<?php echo $mail; ?>" />
+						<input type="hidden" name="post_ActivationKey" value="<?php echo $ActivationKey; ?>" />
+						<button class="login100-form-btn" type="submit" name="mail">
+                     		RENVOYER UN MAIL
+                  		</button>
+                  		&nbsp;
+                  		&nbsp;
+                  		<button class="login100-form-btn" type="submit" name="home" value="">
+                     		ACCUEIL
+                  		</button>
 					</div>
 
 					</div>
@@ -72,9 +109,24 @@
 	<script src="/assets/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/assets/login/js/main.js"></script>
+	<script src="/assets/login/js/main.js"></script>
+	<script src="/assets/notification-Hullabaloo/js/hullabaloo.js"></script>
 
+	<!-- Popup de bienvenue -->
+	<?php
+		if (isset($_SESSION['mail_send'])){
+		if ($_SESSION['mail_send'] == 1){ ?>
+		<script type="text/javascript">
+		var hulla = new hullabaloo();
+		hulla.send("Email envoyé !", "success");
+		</script> 
+	<?php }} ?>
 
-	<?php unset($_SESSION['myemail']); ?>
+	<?php 
+		unset($_SESSION['myemail']);
+		unset($_SESSION['key']);
+		unset($_SESSION['mail_send']);  
+	?>
 
 </body>
 </html>
