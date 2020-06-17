@@ -48,13 +48,16 @@
                     <a class="nav-link link text-white display-4" href="index.php">
                         Accueil</a>
                 </li>
-                <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false">A propos</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="leclub.html" aria-expanded="false">Le club</a><a class="text-white dropdown-item display-4" href="faq.html">Règles &amp; FAQ</a><a class="text-white dropdown-item display-4" href="contact.html" aria-expanded="false">Contact</a></div>
+                <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false">Le Club</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="comity.php" aria-expanded="false">Notre Bureau</a><a class="text-white dropdown-item display-4" href="professors.php">Nos Professeurs</a><a class="text-white dropdown-item display-4" href="agenda.php" aria-expanded="false">L'Agenda du Club</a></div>
                 </li>
-                <li class="nav-item"><a class="nav-link link text-white display-4" href="actualites.html">
-                        Actualités</a>
+                <li class="nav-item"><a class="nav-link link text-white display-4" href="clubLife.php">
+                        La vie du Club</a>
                 </li>
-                <li class="nav-item"><a class="nav-link link text-white display-4" href="classement.html">
-                        Classement</a>
+                <li class="nav-item"><a class="nav-link link text-white display-4" href="bridgeSchool.php">
+                        L'Ecole de Bridge</a>
+                </li>
+                <li class="nav-item"><a class="nav-link link text-white display-4" href="contactFAQ.php">
+                        Contact & FAQ</a>
                 </li>
 
                 <?php if (!isset($_SESSION['login_user'])){ ?> 
@@ -62,17 +65,16 @@
                         <?php } else { ?>
                     <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false"><?php echo $_SESSION['login_user']; ?></a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="param.php" aria-expanded="false">Paramètres</a><a class="text-white dropdown-item display-4" href="logout.php">Déconnexion</a></div></li>
                 <?php } ?>
-
-
             </ul>
         </div>
     </nav>
 </section>
+
 <section class="cid-rZ4dtABDg3 mbr-fullscreen mbr-parallax-background" id="header2-1">
     <div class="container align-center">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-8">
-                <h1 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1" style="height: auto;background-color: white;margin: auto;width: auto;border-style: solid;">Club Bridge Montois</h1>
+                <h1 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1" style="height: auto;background-color: white;margin: auto;width: auto;border-style: solid;">Bridge Club Montois</h1>
             </div>
         </div>
     </div>
@@ -161,43 +163,13 @@
                             E-mail :
                         </h5>
                         <p class="mbr-text align-left mbr-fonts-style display-7">
-                            bridgeclub.montois@sfrclub.fr</p>
+                            bridgeclubmontois40@gmail.com</p>
                     </div>
                 </div>
             </div>
             <!--Right-->
             <div class="col-12 col-md-6">
                 <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2875.0090649336166!2d-0.48235038464960944!3d43.89707897911371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55d0f0867fe665%3A0xb0a4a550ab6dbc0c!2s453%20Chemin%20des%20Sports%2C%2040000%20Mont-de-Marsan!5e0!3m2!1sfr!2sfr!4v1589553660805!5m2!1sfr!2sfr" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="mbr-section form3 cid-rZ4g1BZO7r" id="form3-6">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="align-center pb-2 mbr-fonts-style display-2">
-                    Restons en contact</h2>
-                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                    Inscrivez vous aux actualités !</h3>
-            </div>
-        </div>
-        <div class="row py-2 justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                <!---Formbuilder Form--->
-                <form action="https://mobirise.com/" method="POST" class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="QgPSzuh8dhqCLXNIuHYJI1Kgx8+cdi1Df++UIhIe2zhU6Gk616/krRspjhNWlJPfFuz+9JmSg3V2wjbi/ycXVlFkrybUi1kHwCVbX/+tNb8wdhX+/BxO4VayNgcR2XlK">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                        </div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="form-group col" data-for="email">
-                            <input type="email" name="email" placeholder="Email" data-form-field="Email" required="required" class="form-control display-7" id="email-form3-6">
-                        </div>
-                        <div class="col-auto input-group-btn"><button type="submit" class="btn btn-primary display-4">S'INSCRIRE</button></div>
-                    </div>
-                </form><!---Formbuilder Form--->
             </div>
         </div>
     </div>

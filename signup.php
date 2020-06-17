@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	   			$badID = 1;
 	   		}else {
 	      		$myActivationKey = md5(rand(0,1000)); // Genere une clé aléatiure de 32 caractères
-	      		$sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`, `Status`, `EmailActivationKey`) VALUES ('$myusername','$myemail', '$mypassword', 0, '$myActivationKey')";
+	      		$sql2 = "INSERT INTO `Accounts`(`Name`, `Mail`, `Password`, `Status`, `EmailActivationKey`, `Admin`) VALUES ('$myusername','$myemail', '$mypassword', 0, '$myActivationKey', 0)";
 	      		$result = mysqli_query($db,$sql2);
 	      		$_SESSION['mail_username'] = $myusername;
 	      		$_SESSION['mail_email'] = $myemail;

@@ -104,10 +104,14 @@
               echo "<td class=\"body-item mbr-fonts-style display-7\" style=\"vertical-align:middle;\">";
               if ($row['Status'] == "1"){ echo "<span style=\"background-color:lime;\">ENREGISTRÉ</span>"; }
               else{ echo "<span style=\"background-color:coral;\">NON ENREGISTRÉ</span>";}
+              if ($row['Admin'] == "1"){ echo "&nbsp;-&nbsp;<span style=\"background-color:yellow;\">ADMIN</span>"; }
               echo "</td>";
 
               //echo "<td class=\"body-item mbr-fonts-style display-7\">".$row['EmailActivationKey']."</td>";
-              echo "<td> <button type=\"button\" name=\"delete\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs delete\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: red !important;border-color: black !important; !important\">SUPPRIMER</button>"; if ($row['Status'] == "0"){ echo "&nbsp;&nbsp;<button type=\"button\" name=\"enreg\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs enreg\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: blue !important;border-color: black !important; !important\">ENREGISTRER</button>"; } echo "</td>";
+              echo "<td> <button type=\"button\" name=\"delete\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs delete\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: red !important;border-color: black !important; !important\">SUPPRIMER</button>"; 
+              if ($row['Status'] == "0"){ echo "&nbsp;&nbsp;<button type=\"button\" name=\"enreg\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs enreg\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: blue !important;border-color: black !important; !important\">ENREGISTRER</button>"; }
+              if ($row['Admin'] == "0"){ echo "&nbsp;&nbsp;<button type=\"button\" name=\"add_admin\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs add_admin\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: navy !important;border-color: black !important; !important\">ADD ADMIN</button>"; } else { echo "&nbsp;&nbsp;<button type=\"button\" name=\"del_admin\" id=\"".$row['id']."\" class=\"btn btn-danger btn-xs del_admin\" style=\"padding:0.1rem 0.1rem !important; margin: 0rem !important; background-color: navy !important;border-color: black !important; !important\">DEL ADMIN</button>";}
+              echo "</td>";
               echo "</tr>";
             }
             ?>
@@ -118,12 +122,12 @@
           <div class="row info">
             <div class="col-md-6">
               <div class="dataTables_info mbr-fonts-style display-7">
-                <span class="infoBefore">Showing</span>
+                <span class="infoBefore">Résultat : </span>
                 <span class="inactive infoRows"></span>
-                <span class="infoAfter">entries</span>
-                <span class="infoFilteredBefore">(filtered from</span>
+                <span class="infoAfter">entrées</span>
+                <span class="infoFilteredBefore">(filtré depuis</span>
                 <span class="inactive infoRows"></span>
-                <span class="infoFilteredAfter"> total entries)</span>
+                <span class="infoFilteredAfter"> résultat(s))</span>
               </div>
             </div>
             <div class="col-md-6"></div>
