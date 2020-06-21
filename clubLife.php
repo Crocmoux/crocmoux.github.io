@@ -1,6 +1,9 @@
 <?php
    include("config.php");
    session_start();
+
+$sql = "SELECT * FROM `Articles` ORDER BY 'id' DESC";
+$result = mysqli_query($db,$sql);
 ?>
 
 <!DOCTYPE html>
@@ -72,23 +75,44 @@
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2">TODO</h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">Vie du Bridge Club Montois - Tous les billets</h2>                
             </div>
         </div>
     </div>
 </section>
 
-<section once="footers" class="cid-rZ4gg10MPF" id="footer6-10">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2019 Club Montois - All Rights Reserved
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+while($row = mysqli_fetch_array($result))
+{?>
+  <section class="mbr-section article content9 cid-s2mGCgXNQI" id="content9-1x">
+      <div class="container">
+          <div class="inner-container" style="width: 100%;">
+              <hr class="line" style="width: 25%;">
+              <div class="section-text align-center mbr-fonts-style display-5">
+                      <?php 
+                      echo $row['Title']." - ".$row['PublicationDate']; 
+                      echo "<br\>";
+                      echo $row['Text'];
+                      ?>
+              </div>
+              <hr class="line" style="width: 25%;">
+          </div>
+          </div>
+  </section>
+
+<?php }?>
+
+  <section once="footers" class="cid-rZ4gg10MPF" id="footer6-10">
+      <div class="container">
+          <div class="media-container-row align-center mbr-white">
+              <div class="col-12">
+                  <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                      © Copyright 2019 Club Montois - All Rights Reserved
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
 
   <script src="/assets/web/assets/jquery/jquery.min.js"></script>
   <script src="/assets/popper/popper.min.js"></script>
