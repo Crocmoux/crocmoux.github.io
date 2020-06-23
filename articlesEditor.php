@@ -2,6 +2,14 @@
 include("config.php");
 session_start();
 
+// Si on n'est pas connecté ET pas admin
+if (!isset($_SESSION['login_admin'],$_SESSION['login_user'])){
+    header("location: index.php");
+    exit;
+} else {
+    $user = $_SESSION['login_user'];
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username et password envoyé depuis le form 
 
@@ -15,8 +23,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo "Message :<".$_POST['Text'].">";
         $Title = mysqli_real_escape_string($db,$_POST['Title']);
         $Text = mysqli_real_escape_string($db,$_POST['Text']);
+        $date = date('Y-m-d');
 
-        $sql = "INSERT INTO `Articles`(`Name`, `PublicationDate`, `Text`, `Title`) VALUES ('MEC',NOW(), '$Text', '$Title')";
+        $sql = "INSERT INTO `Articles`(`Name`, `PublicationDate`, `Text`, `Title`) VALUES ('$user','$date', '$Text', '$Title')";
         $result = mysqli_query($db,$sql);
 
         $_SESSION['article_publish'] = 1;

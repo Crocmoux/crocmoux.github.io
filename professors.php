@@ -24,11 +24,9 @@
   <link rel="stylesheet" href="/assets/theme/css/style.css">
   <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
   
-  
-  
 </head>
 <body>
-  <section class="menu cid-rZ4dsyKntU" once="menu" id="menu1-0">
+<section class="menu cid-rZ4dsyKntU" once="menu" id="menu1-0">
     <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <div class="hamburger">
@@ -43,26 +41,35 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="index.php">
-                        Accueil</a>
+            <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="index.php">Accueil</a>
                 </li>
                 <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false">Le Club</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="comity.php" aria-expanded="false">Notre Bureau</a><a class="text-white dropdown-item display-4" href="professors.php">Nos Professeurs</a><a class="text-white dropdown-item display-4" href="agenda.php" aria-expanded="false">L'Agenda du Club</a></div>
                 </li>
-                <li class="nav-item"><a class="nav-link link text-white display-4" href="clubLife.php">
-                        La vie du Club</a>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="clubLife.php">La vie du Club</a>
                 </li>
-                <li class="nav-item"><a class="nav-link link text-white display-4" href="bridgeSchool.php">
-                        L'Ecole de Bridge</a>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="bridgeSchool.php">L'Ecole de Bridge</a>
                 </li>
-                <li class="nav-item"><a class="nav-link link text-white display-4" href="contactFAQ.php">
-                        Contact & FAQ</a>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="contactFAQ.php">Contact & FAQ</a>
                 </li>
 
                 <?php if (!isset($_SESSION['login_user'])){ ?> 
-                    <li class="nav-item"><a class="nav-link link text-white display-4" href="signin.php">Connexion</a></li>
-                        <?php } else { ?>
-                    <li class="nav-item dropdown"><a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false"><?php echo $_SESSION['login_user']; ?></a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="param.php" aria-expanded="false">Paramètres</a><a class="text-white dropdown-item display-4" href="logout.php">Déconnexion</a></div></li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="signin.php">Connexion</a>
+                </li>
+                <?php } else { ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link link text-white dropdown-toggle display-4" href="" data-toggle="dropdown-submenu" aria-expanded="false"><?php echo $_SESSION['login_user']; ?></a>
+                    <div class="dropdown-menu">
+                        <a class="text-white dropdown-item display-4" href="param.php" aria-expanded="false">Paramètres</a>
+                        <?php if (isset($_SESSION['login_admin'])){ ?> <a class="text-white dropdown-item display-4" href="admin.php">Administration</a><?php } ?>
+                        <a class="text-white dropdown-item display-4" href="logout.php">Déconnexion</a>
+                    </div>
+                </li>
                 <?php } ?>
             </ul>
         </div>
